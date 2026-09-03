@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Material escolar do CEIP Plurilingüe de Monforte de Lemos para o curso 2026-2027.">
+<title>Material escolar 2026-2027 · CEIP Plurilingüe de Monforte de Lemos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#17212E; --muted:#5C6B7A; --paper:#F4F6F8; --card:#FFFFFF;
+  --rule:#D9E0E7; --accent:#1F5673; --accent-soft:#EAF2F6;
+  --success:#287A4B; --shadow:0 8px 28px rgba(23,33,46,.07);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Atkinson Hyperlegible",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:17px;line-height:1.5;
+}
+button,input{font:inherit}
+button{touch-action:manipulation}
+.wrap{max-width:900px;margin:0 auto;padding:26px 18px 64px}
+header{margin-bottom:26px}
+.school{
+  display:inline-block;margin:0 0 14px;padding:5px 9px;border-radius:5px;
+  background:#fff;border:1px solid var(--rule);font-size:13px;font-weight:700;color:var(--muted);
+}
+h1{
+  font-family:"Bricolage Grotesque",Georgia,serif;font-weight:700;
+  font-size:clamp(40px,8vw,64px);line-height:.96;letter-spacing:-.035em;margin:0;
+}
+h1 .year{display:block;font-weight:500;color:var(--muted);font-size:clamp(21px,4vw,30px);letter-spacing:-.01em;margin-top:8px}
+.lede{margin:16px 0 0;max-width:62ch;color:var(--muted);font-size:17px}
+.general-note{
+  margin:22px 0 28px;padding:16px 18px;border:1px solid var(--rule);
+  border-left:5px solid var(--accent);background:#fff;border-radius:6px;
+}
+.general-note h2{font-size:16px;margin:0 0 7px;font-family:"Bricolage Grotesque",Georgia,serif}
+.general-note ul{margin:0;padding-left:20px;color:var(--muted)}
+.general-note li+li{margin-top:3px}
+.stage{margin:0 0 20px}
+.stage h2{
+  font-family:"Bricolage Grotesque",Georgia,serif;font-size:14px;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 9px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.chip{
+  font-size:16px;font-weight:700;background:#fff;color:var(--ink);
+  border:1.5px solid var(--rule);border-left:5px solid var(--cc);
+  border-radius:6px;padding:10px 14px;cursor:pointer;min-height:44px;
+  transition:background-color .12s ease,border-color .12s ease,transform .12s ease;
+}
+.chip:hover{border-color:var(--cc);transform:translateY(-1px)}
+.chip[aria-pressed="true"]{background:var(--cc);border-color:var(--cc);color:#fff}
+.chip:focus-visible,.btn:focus-visible,.search input:focus-visible,.clear-search:focus-visible{
+  outline:3px solid var(--ink);outline-offset:2px
+}
+.panel{
+  background:var(--card);border:1px solid var(--rule);border-top:5px solid var(--accent);
+  border-radius:8px;padding:24px;box-shadow:var(--shadow);margin-top:28px;
+}
+.panel.enter{animation:rise .22s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.panel-head{display:flex;gap:18px;align-items:flex-start;justify-content:space-between}
+.panel-head h2{
+  font-family:"Bricolage Grotesque",Georgia,serif;font-size:clamp(26px,5vw,34px);
+  line-height:1.05;letter-spacing:-.02em;margin:0;color:var(--accent)
+}
+.panel-head .sub{margin:4px 0 0;color:var(--muted);font-size:15px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.btn{
+  min-height:44px;padding:10px 15px;border-radius:6px;border:1px solid var(--accent);
+  background:var(--accent);color:#fff;cursor:pointer;font-weight:700;
+}
+.btn:hover{filter:brightness(1.08)}
+.btn-quiet{background:#fff;color:var(--ink);border-color:var(--rule)}
+.btn-quiet:hover{filter:none;border-color:#9AA7B4}
+.btn-danger{color:#8B2E2E;border-color:#E3CACA;background:#fff}
+.status{
+  margin:20px 0 18px;padding:15px 16px;background:var(--accent-soft);
+  border-radius:7px;border:1px solid var(--rule)
+}
+.status-row{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.status-text{font-size:15px;color:var(--muted)}
+.status-text strong{color:var(--ink)}
+.progress{height:9px;background:#DDE5EA;border-radius:99px;overflow:hidden;margin-top:9px}
+.progress-bar{height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .18s ease}
+.search{
+  display:flex;align-items:center;gap:9px;border:1px solid var(--rule);
+  background:#fff;border-radius:6px;padding:0 11px;margin:0 0 12px;
+}
+.search span{color:var(--muted);font-size:18px}
+.search input{border:0;outline:0;width:100%;min-width:0;padding:12px 4px;background:transparent}
+.clear-search{
+  border:0;background:transparent;color:var(--muted);cursor:pointer;padding:7px;border-radius:4px;
+}
+.clear-search:hover{color:var(--ink);background:var(--paper)}
+.search-meta{font-size:14px;color:var(--muted);margin:0 0 5px}
+.items{margin:0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+.group{
+  font-family:"Bricolage Grotesque",Georgia,serif;font-weight:700;font-size:15px;
+  padding:16px 0 6px;color:var(--accent);border-bottom:1px solid var(--rule)
+}
+.item{
+  display:grid;grid-template-columns:28px 44px minmax(0,1fr);gap:0 9px;align-items:start;
+  padding:12px 5px 12px 0;border-bottom:1px solid var(--rule);cursor:pointer;min-height:52px;
+}
+.item:hover{background:#FAFBFC}
+.item input{position:absolute;opacity:0;width:1px;height:1px}
+.box{
+  width:22px;height:22px;margin-top:1px;border:1.5px solid #A9B6C2;border-radius:4px;
+  display:block;position:relative
+}
+.item:hover .box{border-color:var(--accent)}
+.item input:focus-visible + .box{outline:3px solid var(--ink);outline-offset:2px}
+.item input:checked + .box{background:var(--accent);border-color:var(--accent)}
+.item input:checked + .box::after{
+  content:"";position:absolute;left:6px;top:2px;width:6px;height:11px;
+  border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(42deg)
+}
+.qty{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--accent);margin-top:1px}
+.txt{margin-top:0}
+.item input:checked ~ .txt,.item input:checked ~ .qty{color:#8D99A5;text-decoration:line-through}
+.badges{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.badge{
+  display:inline-block;font-size:12px;line-height:1.2;font-weight:700;
+  padding:3px 6px;border-radius:4px;border:1px solid var(--rule);background:#F5F7F8;color:var(--muted);
+  text-decoration:none
+}
+.badge-reuse{color:#21663E;background:#EEF7F1;border-color:#CBE5D4}
+.badge-optional{color:#7A5A16;background:#FFF8E7;border-color:#EBD99F}
+.badge-specific{color:#7A3C16;background:#FFF1E9;border-color:#E8C4AE}
+.notes{margin-top:22px;padding:16px 18px;border-left:4px solid var(--accent);background:#F8FAFB;border-radius:4px}
+.notes h3{font-family:"Bricolage Grotesque",Georgia,serif;font-size:16px;margin:0 0 7px}
+.notes p{margin:0 0 8px;font-size:15.5px;color:var(--muted)}
+.notes p:last-child{margin-bottom:0}
+.foot-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.empty{
+  border:1px dashed var(--rule);border-radius:7px;background:#fff;padding:30px 20px;
+  margin-top:28px;color:var(--muted);text-align:center
+}
+.no-results{padding:28px 8px;text-align:center;color:var(--muted)}
+footer{margin-top:28px;font-size:14px;color:var(--muted)}
+.print-only{display:none}
+.toast{
+  position:fixed;left:50%;bottom:22px;transform:translate(-50%,15px);opacity:0;pointer-events:none;
+  background:#17212E;color:#fff;padding:10px 15px;border-radius:6px;font-size:15px;
+  box-shadow:0 8px 24px rgba(0,0,0,.18);transition:opacity .18s ease,transform .18s ease;z-index:20
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:650px){
+  .wrap{padding:18px 13px 48px}
+  .panel{padding:18px 14px}
+  .panel-head{display:block}
+  .toolbar{margin-top:13px;justify-content:stretch}
+  .toolbar .btn{flex:1}
+  .chip{padding:9px 12px}
+  .item{grid-template-columns:28px 38px minmax(0,1fr);padding:13px 2px 13px 0}
+  .foot-actions .btn{width:100%}
+  .status-row{align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}.panel.enter{animation:none}
+  *{transition:none!important}
+}
+@media print{
+  @page{margin:13mm}
+  body{background:#fff;font-size:11.5pt;line-height:1.35}
+  .wrap{max-width:none;padding:0}
+  header,.general-note,.stage,.empty,.toolbar,.search,.search-meta,.foot-actions,footer,.toast{display:none!important}
+  .print-only{display:block}
+  .panel{border:0;padding:0;margin:0;box-shadow:none;animation:none}
+  .print-head{border-bottom:2px solid #000;padding-bottom:7px;margin-bottom:12px}
+  .print-head .p-school{font-size:10pt;margin:0}
+  .print-head .p-title{font-family:"Bricolage Grotesque",Georgia,serif;font-size:19pt;margin:2px 0 0}
+  .print-head .p-year{font-size:10pt;margin:2px 0 0}
+  .panel-head,.status{display:none}
+  .items{border-top:1px solid #000}
+  .group{color:#000;border-bottom:1px solid #000;padding-top:12px;break-after:avoid}
+  .item{padding:5px 0;break-inside:avoid;cursor:default;border-bottom:1px solid #CCC}
+  .box{border:1px solid #000;width:14px;height:14px;margin-top:2px}
+  .item input:checked + .box{background:#fff}
+  .item input:checked + .box::after{border-color:#000;left:4px;top:1px;width:4px;height:8px}
+  .item input:checked ~ .txt,.item input:checked ~ .qty{color:#000;text-decoration:none}
+  .qty{color:#000}
+  .badges{display:none}
+  .notes{border-left:2px solid #000;break-inside:avoid;background:#fff}
+  .notes p{color:#000;font-size:10pt}
+  .p-sign{margin-top:16px;font-size:9.5pt;border-top:1px solid #CCC;padding-top:6px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <p class="school">CEIP Plurilingüe de Monforte de Lemos · Xunta de Galicia</p>
+    <h1>Material escolar<span class="year">Curso 2026-2027</span></h1>
+    <p class="lede">Consulta o material do curso do teu fillo ou filla. Podes marcar o que xa mercaches, buscar artigos, compartir a lista ou imprimila para levala contigo.</p>
+  </header>
+
+  <section class="general-note" aria-labelledby="before-title">
+    <h2 id="before-title">Antes de comprar</h2>
+    <ul>
+      <li>Todo o material debe vir marcado co nome do alumno ou alumna.</li>
+      <li>Revisa se podes reutilizar material do curso anterior cando se indique.</li>
+      <li>Ao longo do curso poden solicitarse materiais específicos para actividades puntuais.</li>
+    </ul>
+  </section>
+
+  <nav id="picker" aria-label="Selecciona o curso"></nav>
+  <div id="out" aria-live="polite"></div>
+  <footer>CEIP Plurilingüe de Monforte de Lemos · Material escolar 2026-2027</footer>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+const COURSES = [
+  {
+    id:"ei3", stage:"infantil", chip:"3 anos", color:"#E8A400",
+    title:"4º de Educación Infantil", sub:"3 anos",
+    items:[
+      [1,"Mandilón amarelo de cadriños"],
+      [1,"Gorra"],
+      [1,"Caixa de panos de papel"],
+      [3,"Paquetes de toalliñas húmidas"],
+      [1,"Paquete de 500 folios brancos A4 Navigator 80 gr",1],
+      [1,"Paquete de folios de cor"],
+      [3,"Botes de plastilina Play-Doh (a elixir)"],
+      [1,"Pegamento de barra grande con cor Milan"],
+      [1,"Pegamento de barra grande Milan ou Imedio"],
+      [1,"Caixa de ceras Dacs Trix Alpino, 12 cores"],
+      [1,"Lapis triangular Trimax Alpino, 24 cores"],
+      [10,"Cartolinas brancas"],
+      [6,"Pinzas de pala abatible, tamaño 32 mm"],
+      [5,"Cartolinas negras"],
+      [5,"Cartolinas de cores variados"],
+      [1,"Caixa de rotuladores Giotto Turbo Maxi, 24 cores"],
+      [1,"Pincel Jovi Jumbo"],
+      [1,"Carpeta tipo sobre de plástico A5"],
+      [4,"Jovi Neón (un de cada cor)"],
+      [1,"Coitelo para cortar plastilina"],
+      [1,"Caixa de témperas sólidas de Apli"],
+      [3,"Bolsas de papel cor marrón, tamaño 320 x 400 x 14 mm"],
+      [2,"Edding 1200 Colour Pen fin, negro"],
+      [1,"Punzón"]
+    ],
+    notes:[]
+  },
+  {
+    id:"ei4", stage:"infantil", chip:"4 anos", color:"#CE3A2F",
+    title:"5º de Educación Infantil", sub:"4 anos",
+    items:[
+      [1,"Foto actualizada tamaño carné",1],
+      [1,"Mandilón vermello de cadriños"],
+      [1,"Gorra"],
+      [3,"Caixas de panos de papel"],
+      [3,"Paquetes de toalliñas húmidas"],
+      [1,"Paquete de 500 folios brancos A4 Navigator 80 gr",1],
+      [1,"Carpeta tipo sobre de plástico A5"],
+      [1,"Alfombriña de picar de goma eva grosa"],
+      [1,"Tixeira (Kaikut – Stainless)"],
+      [2,"Pegamentos de barra grande con cor (Milan ou Imedio)"],
+      [1,"Lapis Staedtler HB2"],
+      [1,"Paquete de folios de cores"],
+      [10,"Cartolinas brancas"],
+      [5,"Cartolinas negras"],
+      [5,"Cartolinas de cores variadas"],
+      [6,"Pinzas de pala abatibles (pinza suxeita papeis)"],
+      [1,"Caixa de 24 rotuladores delgados Giotto Turbo Color"],
+      [1,"Afía doble (lapis gordo e fino), sen depósito"],
+      [3,"Bolsas de papel cor marrón, tamaño 320 x 400 x 14 mm"]
+    ],
+    notes:[]
+  },
+  {
+    id:"ei5", stage:"infantil", chip:"5 anos", color:"#2A66C9",
+    title:"6º de Educación Infantil", sub:"5 anos",
+    items:[
+      [1,"Foto actualizada tamaño carné",1],
+      [1,"Mandilón azul de cadriños"],
+      [1,"Gorra"],
+      [3,"Caixas de panos de papel"],
+      [3,"Paquetes de toalliñas húmidas"],
+      [1,"Paquete de 500 folios brancos A4 Navigator 80 gr",1],
+      [1,"Carpeta tipo sobre de plástico A5"],
+      [1,"Alfombriña de picar de goma eva grosa"],
+      [1,"Tixeira Kaikut – Stainless"],
+      [2,"Pegamentos de barra grande (Milan ou Imedio)"],
+      [10,"Cartolinas brancas"],
+      [5,"Cartolinas negras"],
+      [5,"Cartolinas de cores variadas"],
+      [1,"Block de manualidades de papel celofán"],
+      [6,"Pinzas de pala abatibles (pinza suxeita papeis)"],
+      [1,"Caixa de lapis de 24 cores Alpino (delgados)"],
+      [1,"Afía doble (lapis gordo e fino), sen depósito"],
+      [2,"Gomas Staedtler"],
+      [3,"Bolsas de papel marrón, tamaño 320 x 400 x 14 mm"]
+    ],
+    notes:[]
+  },
+  {
+    id:"p1", stage:"primaria", chip:"1º", color:"#6A4C93",
+    title:"1º de Educación Primaria", sub:"",
+    items:[
+      [1,"Foto actualizada tamaño carné",1],
+      [1,"Paquete de 500 folios DIN A4 Navigator Universal 80 g",1],
+      [1,"Libreta pequena de pauta ou cuadrícula con arame — Lamela 4 mm"],
+      [1,"Libreta pequena para usar como axenda escolar e facer nela anotacións"],
+      [1,"Caixa de lapis Noris Staedtler n.º 2 HB"],
+      [3,"Gomas de borrar da marca Staedtler"],
+      [1,"Afialapis con recolledor"],
+      [1,"Estoxo con cremalleiras, mellor con dous bolsillos"],
+      [2,"Pegamentos de barra grande Pritt"],
+      [1,"Tesoira de punta redonda"],
+      [1,"Caixa de 12 rotuladores de punta ancha"],
+      [1,"Caixa de 24 ceras Plastidecor"],
+      [1,"Carpeta con gomas para gardar o material de inglés"],
+      [4,"Sobres de plástico con solapa, tamaño DIN A4"],
+      [1,"Caixa de plástico con tapa para gardar o material de reposto"],
+      [1,"Paquete grande de toalliñas húmidas"],
+      [1,"Caixa de panos de papel"],
+      [1,"Gorra"]
+    ],
+    notes:[
+      "Todo o material, incluídos os libros, deberá traer posto o nome do alumno ou alumna.",
+      "Nas caixas de ceras e rotuladores, o nome pode vir escrito na caixa, non en cada cera ou rotulador."
+    ]
+  },
+  {
+    id:"p2", stage:"primaria", chip:"2º", color:"#1B8A7E",
+    title:"2º de Educación Primaria", sub:"",
+    items:[
+      [1,"Foto actualizada tamaño carné",1],
+      [1,"Paquete de 500 folios DIN A4 Navigator Universal 80 g",1],
+      [1,"Libreta pequena Lamela doble pauta ancha 5 mm con espiral (para 2º B)"],
+      [2,"Libretas pequenas Lamela doble pauta ancha 5 mm con espiral (para 2º A)"],
+      [1,"Axenda escolar 2026/27"],
+      [6,"Lapis Noris Staedtler n.º 2 HB"],
+      [2,"Gomas de borrar da marca Staedtler"],
+      [1,"Afialapis con recolledor"],
+      [1,"Estoxo con cremalleira, mellor con dous bolsillos"],
+      [3,"Pegamentos de barra grande Pritt"],
+      [1,"Tesoira de punta redonda"],
+      [2,"Bolígrafos borrables: un azul e outro vermello"],
+      [1,"Caixa de 12 rotuladores de punta fina"],
+      [1,"Caixa de 12 lapis finos de cores Maxicolor"],
+      [1,"Pincel Jovi (Jumbo)"],
+      [3,"Carpetas de plástico con gomas e solapas (titoría, música e relixión)"],
+      [1,"Carpeta de 4 anillas grosas, grosor do lombo 4 mm, con separadores tamaño folio A4, valeiras sen folios (para fotocopias e proxecto competencial)",1],
+      [1,"Sobre de plástico tamaño DIN A4"],
+      ["","Caixa de plástico pequena para gardar o material na aula"],
+      ["","Paquete grande de toalliñas húmidas"],
+      [1,"Caixa de panos de papel"]
+    ],
+    notes:[]
+  },
+  {
+    id:"p3", stage:"primaria", chip:"3º", color:"#D9502A",
+    title:"3º de Educación Primaria", sub:"",
+    items:[
+      [1,"Foto actualizada tamaño carné",1],
+      [1,"Paquete de 500 folios DIN A4 Navigator Universal 80 g",1],
+      [4,"Libretas tamaño A4 de cuadrícula"],
+      [2,"Libretas tamaño A4 de dobre pauta"],
+      ["","Axenda escolar (só para 3º B)"],
+      [3,"Carpetas sobre con solapa tamaño A4"],
+      [1,"Frauta (serve se teñen a de irmáns maiores)"],
+      [1,"Estoxo con: 4 lapis Staedtler Noris HB2, 2 gomas de borrar Staedtler, 1 afialapis con recolledor de Milan, 2 bolis azuis e 1 vermello borrables"],
+      [2,"Barras de pegamento"],
+      [1,"Tesoira de punta redonda"],
+      [1,"Caixa de 24 rotuladores Jovi de punta fina"],
+      [1,"Caixa de 24 lapis de cores Alpino Tri delgados"],
+      [2,"Carpetas con goma"],
+      [1,"Bolsa con cremalleira para gardar o material de reposto"],
+      [1,"Regra de plástico de 20 cm"],
+      [1,"Paquete grande de toalliñas húmidas"],
+      [1,"Caixa de panos de papel"]
+    ],
+    notes:[
+      "Se teñen algún destes materiais do ano pasado en bo estado, tamén serve.",
+      "Prégase que todos os materiais veñan marcados co nome dos nenos e nenas.",
+      "Ao longo do curso pode ser que se vaian pedindo materiais específicos se se precisan para actividades."
+    ]
+  },
+  {
+    id:"p4", stage:"primaria", chip:"4º", color:"#2F7D4B",
+    title:"4º de Educación Primaria", sub:"",
+    items:[
+      [1,"Foto actualizada tamaño carné",1],
+      [1,"Paquete de 500 folios DIN A4 Navigator Universal 80 g",1],
+      [5,"Libretas grandes cuadriculadas (cadrícula de 5 mm) de arame"],
+      ["","A libreta de inglés do curso anterior"],
+      [7,"Carpetas tipo sobre A3 (só en 4º A)"],
+      [1,"Carpeta A3 de gomas"],
+      [1,"Axenda escolar semana vista"],
+      [4,"Bolis: azul, negro, vermello e verde"],
+      [1,"Lapis"],
+      [1,"Goma de borrar"],
+      [1,"Tesoira"],
+      [1,"Pegamento de barra"],
+      [1,"Regra de 30 cm"],
+      [1,"Transportador de ángulos"],
+      [18,"Pinturas de cores tipo Alpino"],
+      [18,"Rotuladores de punta fina"],
+      [3,"Subliñadores: verde, azul e amarelo"],
+      ["","Tipex opcional; de ser o caso, de cinta (só en 4º A)"],
+      [1,"Frauta"],
+      [1,"Caixa de panos de papel"],
+      [1,"Caixa de toalliñas"]
+    ],
+    notes:[]
+  },
+  {
+    id:"p5", stage:"primaria", chip:"5º", color:"#B23F76",
+    title:"5º de Educación Primaria", sub:"",
+    items:[
+      [1,"Foto actualizada tamaño carné",1],
+      [1,"Paquete de 500 folios DIN A4 Navigator Universal 80 g",1],
+      [1,"Libreta A4 de cuadrícula (matemáticas)"],
+      [1,"Libreta A4 de cuadrícula (sociais e naturais compartidas na mesma libreta)"],
+      [1,"Libreta A4 de cuadrícula (inglés; serve a do ano pasado)"],
+      [1,"Libreta A4 de liñas (lingua galega)"],
+      [1,"Libreta A4 de liñas (lingua castelá)"],
+      [1,"Block de debuxo (plástica)"],
+      ["","Axenda escolar"],
+      ["","Estoxo pequeno con material básico: lapis, goma, bolígrafo azul, negro, vermello e outros, se queren, e afialapis"],
+      ["","Estoxo, bolsa ou caixa con material máis específico: pegamento, tesoira, ceras, lapis de cores, rotuladores, acuarelas e pincel, e rotulador Edding negro para perfilar"],
+      ["","Compás e set de regras"],
+      [1,"Carpeta para levar na mochila"],
+      [3,"Sobres de plástico A4 para plástica, inglés e relixión"],
+      [1,"Carpeta para música"],
+      [1,"Frauta"]
+    ],
+    notes:[
+      "Lembrade poñer o nome ao material e tamén á roupa, para que sexa máis doado atopalo en caso de perda.",
+      "É probable que ao longo do curso se pida algún material de xeito puntual."
+    ]
+  },
+  {
+    id:"p6", stage:"primaria", chip:"6º", color:"#1F5673",
+    title:"6º de Educación Primaria", sub:"",
+    items:[
+      [1,"Foto actualizada tamaño carné",1],
+      [1,"Paquete de 500 folios DIN A4 Navigator Universal 80 g",1],
+      {g:"Música"},
+      [1,"Carpeta de plástico tamaño A4 (folio) con peche de botón ou goma"],
+      [1,"Frauta doce (serve a do curso pasado)"],
+      {g:"Plástica"},
+      [1,"Block de debuxo tamaño folio e carpeta A4 tipo sobre"],
+      ["","Ceras, lapis de cores e rotuladores (serve o do curso pasado)"],
+      {g:"Inglés"},
+      [1,"Libreta grande de cuadrícula (serve a do curso pasado)"],
+      [1,"Sobre tamaño A4"],
+      {g:"Material de aula"},
+      [1,"Estoxo de 2 ou 3 departamentos"],
+      [3,"Bolígrafos non borrables (azul, negro e vermello)"],
+      [3,"Libretas grandes cuadriculadas de arame: matemáticas, linguas e unha para compartir as ciencias"],
+      [1,"Sobre de plástico tamaño A4 para tarefas"],
+      [2,"Lapis Noris Staedtler HB, goma Staedtler e afialapis con depósito"],
+      ["","Tesoiras, unha regra de 30 cm, escuadra, cartabón e compás (valen do curso pasado)"],
+      [2,"Subliñadores de cor amarelo e verde"],
+      [2,"Pegamentos de barra"],
+      ["","Axenda escolar"]
+    ],
+    notes:[
+      "Poden pedirse materiais durante o curso para traballos puntuais.",
+      "Todo o material debe vir co nome."
+    ]
+  }
+];
+
+const picker = document.getElementById("picker");
+const out = document.getElementById("out");
+const toast = document.getElementById("toast");
+let current = null;
+let toastTimer = null;
+
+const STORAGE_PREFIX = "ceip_monforte_material_2026_2027_";
+
+function esc(s){
+  return String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+}
+function normalize(s){
+  return String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+}
+function keyFor(c){ return STORAGE_PREFIX + c.id; }
+
+function showToast(message){
+  clearTimeout(toastTimer);
+  toast.textContent = message;
+  toast.classList.add("show");
+  toastTimer = setTimeout(()=>toast.classList.remove("show"),2200);
+}
+
+function buildPicker(){
+  [["infantil","Educación infantil"],["primaria","Educación primaria"]].forEach(([stage,label])=>{
+    const sec=document.createElement("div");
+    sec.className="stage";
+    const h=document.createElement("h2");
+    h.textContent=label;
+    const ul=document.createElement("ul");
+    ul.className="chips";
+    COURSES.filter(c=>c.stage===stage).forEach(c=>{
+      const li=document.createElement("li");
+      const b=document.createElement("button");
+      b.type="button"; b.className="chip";
+      b.style.setProperty("--cc",c.color);
+      b.textContent=c.chip;
+      b.setAttribute("aria-pressed","false");
+      b.dataset.id=c.id;
+      b.addEventListener("click",()=>select(c.id));
+      li.appendChild(b); ul.appendChild(li);
+    });
+    sec.append(h,ul); picker.appendChild(sec);
+  });
+}
+
+function loadState(c){
+  try{
+    const raw=localStorage.getItem(keyFor(c));
+    return raw ? JSON.parse(raw) : {};
+  }catch(e){ return {}; }
+}
+function saveState(c, boxes){
+  try{
+    const state={};
+    boxes.forEach(b=>{ if(b.checked) state[b.dataset.n]=true; });
+    localStorage.setItem(keyFor(c),JSON.stringify(state));
+  }catch(e){}
+}
+function clearState(c){
+  try{ localStorage.removeItem(keyFor(c)); }catch(e){}
+}
+
+function detectBadges(text){
+  const n=normalize(text), badges=[];
+  if(n.includes("serve a do curso pasado") || n.includes("serve o do curso pasado") ||
+     n.includes("valen do curso pasado") || n.includes("serve a do ano pasado") ||
+     n.includes("serve o do ano pasado") || n.includes("se teñen algun destes materiais do ano pasado en bo estado") ||
+     n.includes("serve a do ano pasado")){
+    badges.push('<span class="badge badge-reuse">↻ Reutilizable</span>');
+  }
+  if(n.includes("opcional")) badges.push('<span class="badge badge-optional">Opcional</span>');
+  const specific = text.match(/\(só[^)]*\)/i);
+  if(specific) badges.push('<span class="badge badge-specific">'+esc(specific[0].replace(/[()]/g,""))+'</span>');
+  return badges.length ? '<div class="badges">'+badges.join("")+'</div>' : "";
+}
+
+function renderRows(c){
+  let rows="";
+  c.items.forEach((it,n)=>{
+    if(!Array.isArray(it)){
+      rows += '<li class="group" data-group="true">'+esc(it.g)+'</li>';
+      return;
+    }
+    const [q,t,hl]=it;
+    rows += '<li class="material-row" data-text="'+esc(normalize(t))+'">'
+      + '<label class="item">'
+      + '<input type="checkbox" data-n="'+n+'">'
+      + '<span class="box" aria-hidden="true"></span>'
+      + '<span class="qty">'+(q===""?"":esc(q))+'</span>'
+      + '<span class="txt'+(hl?" hl":"")+'">'+esc(t)+detectBadges(t)+'</span>'
+      + '</label></li>';
+  });
+  return rows;
+}
+
+function select(id, shouldScroll=true){
+  const c=COURSES.find(x=>x.id===id);
+  if(!c) return;
+  current=c;
+  document.querySelectorAll(".chip").forEach(b=>{
+    b.setAttribute("aria-pressed",b.dataset.id===id?"true":"false");
+  });
+  document.documentElement.style.setProperty("--accent",c.color);
+  if(history.replaceState) history.replaceState(null,"","#"+id);
+
+  const total=c.items.filter(i=>Array.isArray(i)).length;
+  const rows=renderRows(c);
+  const notes=c.notes.length
+    ? '<div class="notes"><h3>ℹ️ Avisos do curso</h3>'+c.notes.map(n=>'<p>'+esc(n)+'</p>').join("")+'</div>' : "";
+
+  out.innerHTML =
+    '<section class="panel enter">'
+    + '<div class="print-only print-head">'
+    + '<p class="p-school">CEIP Plurilingüe de Monforte de Lemos</p>'
+    + '<p class="p-title">'+esc(c.title)+(c.sub?" · "+esc(c.sub):"")+'</p>'
+    + '<p class="p-year">Material escolar · curso 2026-2027</p>'
+    + '</div>'
+    + '<div class="panel-head">'
+    + '<div><h2>'+esc(c.title)+'</h2>'+(c.sub?'<p class="sub">'+esc(c.sub)+'</p>':'')+'</div>'
+    + '<div class="toolbar">'
+    + '<button type="button" class="btn btn-quiet" id="back">← Cambiar curso</button>'
+    + '<button type="button" class="btn" id="share">Compartir</button>'
+    + '<button type="button" class="btn" id="print">Imprimir / gardar PDF</button>'
+    + '</div></div>'
+    + '<div class="status">'
+    + '<div class="status-row"><div class="status-text" id="statusText"></div><strong id="percent">0 %</strong></div>'
+    + '<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso da lista de compra"><div class="progress-bar" id="progressBar"></div></div>'
+    + '<div class="status-text" style="margin-top:7px">✓ A túa lista gárdase automaticamente neste dispositivo.</div>'
+    + '</div>'
+    + '<div class="search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Buscar material..." aria-label="Buscar material"><button class="clear-search" id="clearSearch" type="button" aria-label="Limpar busca">×</button></div>'
+    + '<p class="search-meta" id="searchMeta"></p>'
+    + '<ul class="items" id="items">'+rows+'</ul>'
+    + notes
+    + '<div class="foot-actions">'
+    + '<button type="button" class="btn btn-quiet" id="copy">Copiar lista</button>'
+    + '<button type="button" class="btn btn-quiet" id="clear">Limpar a miña lista</button>'
+    + '</div>'
+    + '</section>';
+
+  const boxes=[...out.querySelectorAll('input[type="checkbox"]')];
+  const state=loadState(c);
+  boxes.forEach(b=>{
+    b.checked=!!state[b.dataset.n];
+    b.addEventListener("change",()=>{ saveState(c,boxes); refresh(); });
+  });
+
+  const rowsEls=[...out.querySelectorAll(".material-row")];
+  const searchInput=document.getElementById("searchInput");
+  const searchMeta=document.getElementById("searchMeta");
+  const clearSearch=document.getElementById("clearSearch");
+
+  function refresh(){
+    const done=boxes.filter(b=>b.checked).length;
+    const pct=total ? Math.round(done/total*100) : 0;
+    document.getElementById("statusText").innerHTML =
+      pct===100 ? "<strong>✓ Lista completada</strong> · "+done+" de "+total+" artigos"
+                : "<strong>"+done+" de "+total+" artigos comprados</strong>";
+    document.getElementById("percent").textContent=pct+" %";
+    const bar=document.getElementById("progressBar");
+    bar.style.width=pct+"%";
+    bar.parentElement.setAttribute("aria-valuenow",pct);
+    filter();
+  }
+
+  function filter(){
+    const term=normalize(searchInput.value.trim());
+    let shown=0;
+    rowsEls.forEach(row=>{
+      const ok=!term || normalize(row.dataset.text).includes(term);
+      row.hidden=!ok;
+      if(ok) shown++;
+    });
+    // Hide group headings when none of their following items are visible.
+    const groups=[...out.querySelectorAll('.group')];
+    groups.forEach((g,i)=>{
+      let has=false;
+      for(let j=i+1;j<out.querySelectorAll('.items > li').length;j++){
+        const el=out.querySelectorAll('.items > li')[j];
+        if(el.classList.contains("group")) break;
+        if(!el.hidden){has=true;break;}
+      }
+      g.hidden=!has;
+    });
+    searchMeta.textContent=term ? shown+" artigo"+(shown===1?"":"s")+" atopado"+(shown===1?"":"s") : "";
+    const no=out.querySelector(".no-results");
+    if(term && shown===0){
+      if(!no){
+        const li=document.createElement("li"); li.className="no-results"; li.textContent="Non se atopou ningún material con esa busca.";
+        document.getElementById("items").appendChild(li);
+      }
+    }else if(no) no.remove();
+  }
+
+  searchInput.addEventListener("input",filter);
+  clearSearch.addEventListener("click",()=>{searchInput.value="";searchInput.focus();filter();});
+
+  document.getElementById("print").addEventListener("click",()=>window.print());
+  document.getElementById("back").addEventListener("click",()=>{
+    document.getElementById("picker").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+
+  document.getElementById("clear").addEventListener("click",()=>{
+    if(confirm("Queres borrar todos os artigos marcados de "+c.title+"? Esta acción non afectará aos demais cursos.")){
+      boxes.forEach(b=>b.checked=false); clearState(c); refresh(); showToast("Lista limpa");
+    }
+  });
+
+  document.getElementById("copy").addEventListener("click",async()=>{
+    const lines=[`MATERIAL ESCOLAR — ${c.title}${c.sub?" · "+c.sub:""}`,""];
+    c.items.forEach(it=>{
+      if(!Array.isArray(it)){ lines.push(`— ${it.g} —`); return; }
+      const [q,t]=it, checked=boxes.find(b=>b.dataset.n===String(c.items.indexOf(it)))?.checked;
+      lines.push(`${checked?"☑":"☐"} ${q!==""?q+" × ":""}${t}`);
+    });
+    const text=lines.join("\n");
+    try{
+      await navigator.clipboard.writeText(text);
+      showToast("✓ Lista copiada");
+    }catch(e){
+      const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);
+      ta.select();document.execCommand("copy");ta.remove();showToast("✓ Lista copiada");
+    }
+  });
+
+  document.getElementById("share").addEventListener("click",async()=>{
+    const shareData={
+      title:`Material escolar — ${c.title}`,
+      text:`Material escolar 2026-2027 · ${c.title}`,
+      url:location.href
+    };
+    try{
+      if(navigator.share) await navigator.share(shareData);
+      else{
+        await navigator.clipboard.writeText(location.href);
+        showToast("✓ Enlace copiado");
+      }
+    }catch(e){}
+  });
+
+  refresh();
+  if(shouldScroll) out.querySelector(".panel").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function showEmpty(){
+  out.innerHTML='<p class="empty">Selecciona un curso para consultar a lista de material.</p>';
+}
+
+buildPicker();
+const fromHash=location.hash.replace("#","");
+if(COURSES.some(c=>c.id===fromHash)) select(fromHash,false); else showEmpty();
+
+</script>
+</body>
+</html>
